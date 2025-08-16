@@ -361,4 +361,15 @@ export class FileProcessor {
     const i = Math.floor(Math.log(bytes) / Math.log(k));
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   }
+
+  /**
+   * Truncate sheet name to Excel's 31-character limit
+   */
+  private static truncateSheetName(name: string): string {
+    if (name.length <= 31) {
+      return name;
+    }
+    // Truncate and add ellipsis, ensuring we stay within 31 chars
+    return name.substring(0, 28) + "...";
+  }
 }
