@@ -327,9 +327,10 @@ export class FileProcessor {
     // Create workbook
     const workbook = XLSX.utils.book_new();
     
-    // Add unmatched data sheet
+    // Add unmatched data sheet - ensure sheet name doesn't exceed 31 chars
     const unmatchedSheet = XLSX.utils.json_to_sheet(unmatchedData);
-    XLSX.utils.book_append_sheet(workbook, unmatchedSheet, `Unmatched ${file2Name}`);
+    const sheetName2 = this.truncateSheetName(`Unmatched ${file2Name}`);
+    XLSX.utils.book_append_sheet(workbook, unmatchedSheet, sheetName2);
 
     // Add summary sheet
     const summary = [{
