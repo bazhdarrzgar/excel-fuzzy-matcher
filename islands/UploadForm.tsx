@@ -757,58 +757,67 @@ export default function UploadForm() {
 
       {/* Enhanced Results Display */}
       {matchResults.value && (
-        <div className="bg-gradient-to-br from-emerald-50/90 to-green-50/90 dark:from-gray-800/90 dark:to-gray-700/90 backdrop-blur-sm border border-emerald-200/70 dark:border-gray-600/50 rounded-2xl p-8 shadow-2xl dark:shadow-3xl dark:shadow-black/40">
-          <div className="flex justify-between items-start mb-8">
-            <div className="space-y-3">
+        <div className="bg-gradient-to-br from-emerald-50/90 to-green-50/90 dark:from-gray-800/90 dark:to-gray-700/90 backdrop-blur-sm border border-emerald-200/70 dark:border-gray-600/50 rounded-2xl p-8 shadow-2xl dark:shadow-3xl dark:shadow-black/40 mt-8">
+          {/* Header Section with Better Layout */}
+          <div className="flex flex-col lg:flex-row justify-between items-start gap-6 mb-8">
+            <div className="space-y-3 flex-1">
               <h3 className="text-2xl font-bold text-emerald-800 dark:text-emerald-200 flex items-center space-x-3">
                 <span className="w-10 h-10 bg-gradient-to-br from-emerald-100 to-emerald-200 dark:from-emerald-900/50 dark:to-emerald-800/50 rounded-full flex items-center justify-center">
                   ✅
                 </span>
                 <span>{matchResults.value.algorithm?.toUpperCase()} Matching Complete!</span>
               </h3>
-              <div className="flex items-center space-x-6 text-sm">
-                <div className="flex items-center space-x-2">
+              
+              {/* Statistics Row with Better Spacing */}
+              <div className="flex flex-wrap items-center gap-4 text-sm">
+                <div className="flex items-center space-x-2 bg-white/60 dark:bg-gray-800/60 px-3 py-2 rounded-lg border border-emerald-200/30 dark:border-gray-600/30">
                   <span className="w-3 h-3 bg-emerald-500 rounded-full"></span>
-                  <span className="text-emerald-700 dark:text-emerald-300 font-medium">
+                  <span className="text-emerald-700 dark:text-emerald-300 font-semibold">
                     {matchResults.value.totalMatches} matches found
                   </span>
                 </div>
-                <div className="flex items-center space-x-2">
+                
+                <div className="flex items-center space-x-2 bg-white/60 dark:bg-gray-800/60 px-3 py-2 rounded-lg border border-blue-200/30 dark:border-gray-600/30">
                   <span className="w-3 h-3 bg-blue-500 rounded-full"></span>
-                  <span className="text-blue-700 dark:text-blue-300 font-medium">
+                  <span className="text-blue-700 dark:text-blue-300 font-semibold">
                     {matchResults.value.totalProcessed} rows processed
                   </span>
                 </div>
+                
                 {matchResults.value.unmatchedCount && (
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2 bg-white/60 dark:bg-gray-800/60 px-3 py-2 rounded-lg border border-amber-200/30 dark:border-gray-600/30">
                     <span className="w-3 h-3 bg-amber-500 rounded-full"></span>
-                    <span className="text-amber-700 dark:text-amber-300 font-medium">
+                    <span className="text-amber-700 dark:text-amber-300 font-semibold">
                       {(matchResults.value.unmatchedCount.file1 || 0) + (matchResults.value.unmatchedCount.file2 || 0)} unmatched items
                     </span>
                   </div>
                 )}
-                <div className="px-3 py-1.5 bg-gradient-to-r from-purple-100 to-indigo-100 dark:from-purple-900/30 dark:to-indigo-900/30 rounded-full border border-purple-200 dark:border-purple-700/50">
-                  <span className="text-xs font-semibold text-purple-700 dark:text-purple-300 uppercase tracking-wide">
+                
+                <div className="px-4 py-2 bg-gradient-to-r from-purple-100/80 to-indigo-100/80 dark:from-purple-900/40 dark:to-indigo-900/40 rounded-lg border border-purple-200/50 dark:border-purple-700/30">
+                  <span className="text-xs font-bold text-purple-700 dark:text-purple-300 uppercase tracking-wide">
                     {matchResults.value.algorithm} Algorithm
                   </span>
                 </div>
               </div>
             </div>
             
-            {/* Download Section with Main Results Button */}
-            <div className="flex flex-col space-y-3">
+            {/* Download Section - Better Positioned */}
+            <div className="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
               <button
                 onClick={downloadResults}
-                className="group relative bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 flex items-center space-x-3 shadow-xl dark:shadow-2xl dark:shadow-emerald-900/40 hover:shadow-2xl hover:scale-105 border border-emerald-500/30"
+                className="group relative bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-8 py-4 rounded-xl font-bold text-base transition-all duration-300 flex items-center justify-center space-x-3 shadow-xl dark:shadow-2xl dark:shadow-emerald-900/40 hover:shadow-2xl hover:scale-105 border border-emerald-500/30 w-full lg:w-auto min-w-[200px]"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <span className="text-lg relative z-10">💾</span>
-                <span className="relative z-10">Download Excel Report</span>
+                <span className="text-xl relative z-10">💾</span>
+                <div className="relative z-10 text-center">
+                  <div className="font-bold">Download Excel</div>
+                  <div className="text-xs opacity-90">Report</div>
+                </div>
               </button>
             </div>
           </div>
 
-          {/* Unmatched Data Summary */}
+          {/* Unmatched Data Summary - Improved Layout */}
           {matchResults.value.unmatchedCount && ((matchResults.value.unmatchedCount.file1 > 0) || (matchResults.value.unmatchedCount.file2 > 0)) && (
             <div className="mb-8 bg-gradient-to-br from-amber-50/80 to-orange-50/80 dark:from-amber-900/20 dark:to-orange-900/20 border border-amber-200/60 dark:border-amber-600/40 rounded-xl p-6">
               <div className="flex items-start space-x-4">
@@ -819,59 +828,77 @@ export default function UploadForm() {
                   <h4 className="text-lg font-bold text-amber-800 dark:text-amber-200 mb-2">
                     Unmatched Data Available
                   </h4>
-                  <p className="text-amber-700 dark:text-amber-300 text-sm mb-4 leading-relaxed">
+                  <p className="text-amber-700 dark:text-amber-300 text-sm mb-6 leading-relaxed">
                     Some items from your files didn't have matches. Download the unmatched data separately to review items that need manual processing.
                   </p>
                   
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {/* Unmatched File 1 */}
+                  <div className="grid md:grid-cols-2 gap-6">
+                    {/* Unmatched File 1 - Improved Card */}
                     {matchResults.value.unmatchedCount.file1 > 0 && matchResults.value.unmatchedFile1Data && (
-                      <div className="bg-white/80 dark:bg-gray-800/60 rounded-lg p-4 border border-amber-200/50 dark:border-amber-600/30">
-                        <div className="flex items-center justify-between mb-3">
-                          <div>
-                            <h5 className="font-semibold text-gray-900 dark:text-gray-100 text-sm">
-                              📄 {matchResults.value.fileNames?.file1 || 'File 1'}
-                            </h5>
-                            <p className="text-xs text-gray-600 dark:text-gray-400">
-                              {matchResults.value.unmatchedCount.file1} unmatched items
-                            </p>
+                      <div className="bg-white/90 dark:bg-gray-800/70 rounded-xl p-5 border border-amber-200/50 dark:border-amber-600/30 shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div className="flex flex-col space-y-4">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-3">
+                              <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg flex items-center justify-center">
+                                <span className="text-white text-sm font-bold">📄</span>
+                              </div>
+                              <div>
+                                <h5 className="font-bold text-gray-900 dark:text-gray-100 text-sm truncate max-w-[200px]" title={matchResults.value.fileNames?.file1 || 'File 1'}>
+                                  {matchResults.value.fileNames?.file1 || 'File 1'}
+                                </h5>
+                                <p className="text-xs text-gray-600 dark:text-gray-400">
+                                  {matchResults.value.unmatchedCount.file1} unmatched items
+                                </p>
+                              </div>
+                            </div>
                           </div>
+                          
                           <button
                             onClick={downloadUnmatchedFile1}
-                            className="group relative bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl hover:scale-105"
+                            className="group relative bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl hover:scale-105 w-full"
                           >
-                            <span className="text-sm">📥</span>
-                            <span>Download</span>
+                            <span className="text-base">📥</span>
+                            <span>Download Unmatched Data</span>
                           </button>
-                        </div>
-                        <div className="text-xs text-gray-600 dark:text-gray-400">
-                          Items from <strong>{selectedColumn1.value}</strong> column that had no matches
+                          
+                          <div className="text-xs text-gray-600 dark:text-gray-400 bg-gray-50/80 dark:bg-gray-700/50 px-3 py-2 rounded-lg">
+                            Items from <strong>{selectedColumn1.value}</strong> column with no matches
+                          </div>
                         </div>
                       </div>
                     )}
 
-                    {/* Unmatched File 2 */}
+                    {/* Unmatched File 2 - Improved Card */}
                     {matchResults.value.unmatchedCount.file2 > 0 && matchResults.value.unmatchedFile2Data && (
-                      <div className="bg-white/80 dark:bg-gray-800/60 rounded-lg p-4 border border-amber-200/50 dark:border-amber-600/30">
-                        <div className="flex items-center justify-between mb-3">
-                          <div>
-                            <h5 className="font-semibold text-gray-900 dark:text-gray-100 text-sm">
-                              📄 {matchResults.value.fileNames?.file2 || 'File 2'}
-                            </h5>
-                            <p className="text-xs text-gray-600 dark:text-gray-400">
-                              {matchResults.value.unmatchedCount.file2} unmatched items
-                            </p>
+                      <div className="bg-white/90 dark:bg-gray-800/70 rounded-xl p-5 border border-amber-200/50 dark:border-amber-600/30 shadow-lg hover:shadow-xl transition-all duration-300">
+                        <div className="flex flex-col space-y-4">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-3">
+                              <div className="w-8 h-8 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-lg flex items-center justify-center">
+                                <span className="text-white text-sm font-bold">📄</span>
+                              </div>
+                              <div>
+                                <h5 className="font-bold text-gray-900 dark:text-gray-100 text-sm truncate max-w-[200px]" title={matchResults.value.fileNames?.file2 || 'File 2'}>
+                                  {matchResults.value.fileNames?.file2 || 'File 2'}
+                                </h5>
+                                <p className="text-xs text-gray-600 dark:text-gray-400">
+                                  {matchResults.value.unmatchedCount.file2} unmatched items
+                                </p>
+                              </div>
+                            </div>
                           </div>
+                          
                           <button
                             onClick={downloadUnmatchedFile2}
-                            className="group relative bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 flex items-center space-x-2 shadow-lg hover:shadow-xl hover:scale-105"
+                            className="group relative bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl hover:scale-105 w-full"
                           >
-                            <span className="text-sm">📥</span>
-                            <span>Download</span>
+                            <span className="text-base">📥</span>
+                            <span>Download Unmatched Data</span>
                           </button>
-                        </div>
-                        <div className="text-xs text-gray-600 dark:text-gray-400">
-                          Items from <strong>{selectedColumn2.value}</strong> column that had no matches
+                          
+                          <div className="text-xs text-gray-600 dark:text-gray-400 bg-gray-50/80 dark:bg-gray-700/50 px-3 py-2 rounded-lg">
+                            Items from <strong>{selectedColumn2.value}</strong> column with no matches
+                          </div>
                         </div>
                       </div>
                     )}
