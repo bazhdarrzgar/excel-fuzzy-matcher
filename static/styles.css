@@ -1,0 +1,867 @@
+/* Fuzzy Matcher - ENHANCED CYBERPUNK DARK MODE */
+
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* CSS Variables for ENHANCED CYBERPUNK DARK MODE */
+:root {
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* Light mode colors */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-primary: rgba(229, 231, 235, 0.6);
+  --shadow-primary: rgba(0, 0, 0, 0.1);
+  --text-button: #1f2937; /* Dark text for buttons in light mode */
+}
+
+.dark {
+  /* CYBERPUNK DARK MODE - Deep Space Theme */
+  --bg-primary: #0B0D17;              /* Deep space navy */
+  --bg-secondary: #1A1B26;            /* Dark space purple */
+  --bg-card: rgba(37, 42, 58, 0.85);  /* Semi-transparent cards */
+  --text-primary: #E2E8F0;            /* Bright white text */
+  --text-secondary: #94A3B8;          /* Cyan-tinted secondary */
+  --border-primary: rgba(139, 92, 246, 0.3); /* Purple borders */
+  --shadow-primary: rgba(16, 217, 196, 0.2); /* Cyan shadows */
+  
+  /* Cyberpunk accent colors */
+  --cyber-purple: #8B5CF6;
+  --cyber-cyan: #10D9C4;
+  --cyber-pink: #F472B6;
+  --cyber-blue: #60A5FA;
+}
+
+/* Base styles */
+* {
+  font-family: var(--font-inter);
+}
+
+/* CYBERPUNK DARK MODE - Deep Space Background */
+.dark {
+  color-scheme: dark;
+  background: linear-gradient(135deg, #0B0D17 0%, #1A1B26 25%, #252A3A 50%, #1A1B26 75%, #0B0D17 100%) !important;
+  min-height: 100vh;
+}
+
+.dark body {
+  background: linear-gradient(135deg, #0B0D17 0%, #1A1B26 25%, #252A3A 50%, #1A1B26 75%, #0B0D17 100%) !important;
+  background-attachment: fixed;
+}
+
+/* CYBERPUNK ENHANCED - Animated background particles */
+.dark::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(139, 92, 246, 0.3), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(16, 217, 196, 0.2), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(244, 114, 182, 0.2), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(96, 165, 250, 0.1), transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: floatingParticles 20s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes floatingParticles {
+  0%, 100% { transform: translateY(0px) translateX(0px); opacity: 0.3; }
+  25% { transform: translateY(-10px) translateX(5px); opacity: 0.5; }
+  50% { transform: translateY(-5px) translateX(-5px); opacity: 0.4; }
+  75% { transform: translateY(-15px) translateX(10px); opacity: 0.6; }
+}
+
+/* CYBERPUNK ENHANCED - All elements get cyber styling */
+.dark * {
+  border-color: rgba(139, 92, 246, 0.3) !important;
+}
+
+/* CYBERPUNK CARDS - Glass morphism with neon glow */
+.dark .bg-white,
+.dark .bg-gray-50,
+.dark .bg-gray-100,
+.dark .bg-gray-800,
+.dark .bg-gray-900,
+.dark .bg-gray-950 {
+  background: rgba(37, 42, 58, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(16, 217, 196, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Column selection section styles */
+.bg-gradient-to-br {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(249, 250, 251, 0.8) 100%) !important;
+}
+
+.dark .bg-gradient-to-br {
+  background: linear-gradient(135deg, rgba(37, 42, 58, 0.85) 0%, rgba(26, 27, 38, 0.85) 100%) !important;
+}
+
+/* Column selection text colors */
+.text-gray-700 {
+  color: #374151 !important;
+}
+
+.dark .text-gray-700 {
+  color: #E5E7EB !important;
+}
+
+.text-gray-600 {
+  color: #6B7280 !important;
+}
+
+.dark .text-gray-600 {
+  color: #9CA3AF !important;
+}
+
+/* Select option styles */
+select option {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
+  padding: 0.5rem !important;
+  border-radius: 0.5rem !important;
+}
+
+.dark select option {
+  background-color: rgba(37, 42, 58, 0.9) !important;
+  color: #E5E7EB !important;
+  border-radius: 0.5rem !important;
+}
+
+/* Column name chips styles */
+.bg-gradient-to-r {
+  background: linear-gradient(135deg, var(--bg-card) 0%, rgba(249, 250, 251, 0.8) 100%) !important;
+  color: var(--text-primary) !important;
+  border-color: rgba(147, 197, 253, 0.4) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05) !important;
+}
+
+.dark .bg-gradient-to-r {
+  background: linear-gradient(135deg, rgba(37, 42, 58, 0.85) 0%, rgba(26, 27, 38, 0.85) 100%) !important;
+  color: #E5E7EB !important;
+  border-color: rgba(147, 197, 253, 0.3) !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Algorithm badges and info sections */
+.bg-green-100 {
+  background-color: rgba(22, 163, 74, 0.12) !important;
+}
+
+.bg-yellow-100 {
+  background-color: rgba(250, 204, 21, 0.12) !important;
+}
+
+.bg-red-100 {
+  background-color: rgba(239, 68, 68, 0.12) !important;
+}
+
+.bg-blue-100 {
+  background-color: rgba(59, 130, 246, 0.12) !important;
+}
+
+.bg-indigo-100 {
+  background-color: rgba(168, 85, 247, 0.12) !important;
+}
+
+.bg-orange-100 {
+  background-color: rgba(249, 115, 22, 0.12) !important;
+}
+
+.bg-green-900 {
+  background-color: rgba(17, 128, 47, 0.9) !important;
+}
+
+.bg-yellow-900 {
+  background-color: rgba(133, 77, 0, 0.9) !important;
+}
+
+.bg-red-900 {
+  background-color: rgba(127, 26, 26, 0.9) !important;
+}
+
+.bg-blue-900 {
+  background-color: rgba(14, 58, 147, 0.9) !important;
+}
+
+.bg-indigo-900 {
+  background-color: rgba(88, 38, 157, 0.9) !important;
+}
+
+.bg-orange-900 {
+  background-color: rgba(102, 45, 0, 0.9) !important;
+}
+
+.text-green-800 {
+  color: rgba(22, 163, 74, 0.95) !important;
+}
+
+.text-yellow-800 {
+  color: rgba(250, 204, 21, 0.95) !important;
+}
+
+.text-red-800 {
+  color: rgba(239, 68, 68, 0.95) !important;
+}
+
+.text-blue-800 {
+  color: rgba(59, 130, 246, 0.95) !important;
+}
+
+.text-indigo-800 {
+  color: rgba(168, 85, 247, 0.95) !important;
+}
+
+.text-orange-800 {
+  color: rgba(249, 115, 22, 0.95) !important;
+}
+
+.text-green-300 {
+  color: rgba(163, 230, 53, 0.95) !important;
+}
+
+.text-yellow-300 {
+  color: rgba(254, 240, 138, 0.95) !important;
+}
+
+.text-red-300 {
+  color: rgba(254, 226, 226, 0.95) !important;
+}
+
+.text-blue-300 {
+  color: rgba(147, 197, 253, 0.95) !important;
+}
+
+.text-indigo-300 {
+  color: rgba(199, 210, 254, 0.95) !important;
+}
+
+.text-orange-300 {
+  color: rgba(253, 164, 107, 0.95) !important;
+}
+
+/* Algorithm card info sections */
+.bg-gray-50 {
+  background-color: rgba(249, 250, 251, 0.9) !important;
+}
+
+.bg-blue-50 {
+  background-color: rgba(239, 246, 255, 0.9) !important;
+}
+
+.bg-indigo-50 {
+  background-color: rgba(248, 240, 255, 0.9) !important;
+}
+
+.bg-green-50 {
+  background-color: rgba(240, 253, 244, 0.9) !important;
+}
+
+.bg-emerald-50 {
+  background-color: rgba(236, 253, 245, 0.9) !important;
+}
+
+.dark .bg-gray-50,
+.dark .bg-blue-50,
+.dark .bg-indigo-50,
+.dark .bg-green-50,
+.dark .bg-emerald-50 {
+  background-color: rgba(37, 42, 58, 0.85) !important;
+}
+
+.dark .text-gray-600,
+.dark .text-gray-400 {
+  color: #E5E7EB !important;
+}
+
+/* Hover states for column chips */
+.bg-gradient-to-r:hover {
+  background: linear-gradient(135deg, rgba(249, 250, 251, 0.9) 0%, rgba(249, 250, 251, 0.95) 100%) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .bg-gradient-to-r:hover {
+  background: linear-gradient(135deg, rgba(37, 42, 58, 0.95) 0%, rgba(26, 27, 38, 0.95) 100%) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Focus state for select options */
+select option:checked {
+  background-color: var(--cyber-purple) !important;
+  color: white !important;
+}
+
+.dark select option:checked {
+  background-color: rgba(139, 92, 246, 0.8) !important;
+  color: white !important;
+}
+
+.dark .bg-white\/90,
+.dark .bg-white\/95,
+.dark .bg-gray-800\/60,
+.dark .bg-gray-800\/70,
+.dark .bg-gray-800\/80,
+.dark .bg-gray-800\/90,
+.dark .bg-gray-800\/95,
+.dark .bg-gray-900\/90,
+.dark .bg-gray-900\/95,
+.dark .bg-gray-950\/95 {
+  background: rgba(37, 42, 58, 0.75) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(16, 217, 196, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+/* CYBERPUNK BORDERS - Enhanced neon glow */
+.dark .border-gray-200,
+.dark .border-gray-300,
+.dark .border-gray-600,
+.dark .border-gray-700,
+.dark .border-gray-800 {
+  border-color: rgba(139, 92, 246, 0.4) !important;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.2) !important;
+}
+
+.dark .border-gray-200\/60,
+.dark .border-gray-200\/70,
+.dark .border-gray-700\/40,
+.dark .border-gray-700\/50,
+.dark .border-gray-700\/60,
+.dark .border-gray-800\/60 {
+  border-color: rgba(139, 92, 246, 0.4) !important;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.2) !important;
+}
+
+/* CYBERPUNK TEXT - Bright white and cyber colors */
+.dark .text-white,
+.dark .text-gray-50,
+.dark .text-gray-100,
+.dark .text-gray-200,
+.dark .text-gray-900 {
+  color: #FFFFFF !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Button text color for both modes */
+.text-button {
+  color: var(--text-button) !important;
+}
+
+.dark .text-button {
+  color: white !important;
+}
+
+.dark .text-gray-300,
+.dark .text-gray-400,
+.dark .text-gray-500,
+.dark .text-gray-600,
+.dark .text-gray-700 {
+  color: #94A3B8 !important;
+  text-shadow: 0 0 5px rgba(148, 163, 184, 0.1) !important;
+}
+
+/* CYBERPUNK BUTTONS - Enhanced with neon glow */
+.dark button,
+.dark .btn,
+.dark .btn-gradient {
+  background: linear-gradient(135deg, rgba(37, 42, 58, 0.9) 0%, rgba(26, 27, 38, 0.9) 100%) !important;
+  border: 2px solid rgba(139, 92, 246, 0.5) !important;
+  color: #FFFFFF !important;
+  box-shadow: 
+    0 4px 16px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(139, 92, 246, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.dark button:hover,
+.dark .btn:hover,
+.dark .btn-gradient:hover {
+  background: linear-gradient(135deg, rgba(37, 42, 58, 1) 0%, rgba(26, 27, 38, 1) 100%) !important;
+  border-color: rgba(16, 217, 196, 0.8) !important;
+  color: #FFFFFF !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(16, 217, 196, 0.4),
+    0 0 10px rgba(139, 92, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+}
+
+/* CYBERPUNK FORMS - Enhanced inputs with neon glow */
+.dark input,
+.dark select,
+.dark textarea {
+  background: rgba(37, 42, 58, 0.8) !important;
+  border: 2px solid rgba(139, 92, 246, 0.4) !important;
+  color: #FFFFFF !important;
+  box-shadow: 
+    inset 0 2px 8px rgba(0, 0, 0, 0.3),
+    0 0 10px rgba(139, 92, 246, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #94A3B8 !important;
+}
+
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+  border-color: rgba(16, 217, 196, 0.8) !important;
+  box-shadow: 
+    0 0 20px rgba(16, 217, 196, 0.3),
+    0 0 10px rgba(139, 92, 246, 0.2),
+    inset 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  background: rgba(37, 42, 58, 0.9) !important;
+  color: #FFFFFF !important;
+}
+
+/* CYBERPUNK GRADIENTS - Enhanced color schemes */
+.dark .bg-blue-600,
+.dark .bg-blue-700 {
+  background: linear-gradient(135deg, #8B5CF6 0%, #6366F1 100%) !important;
+}
+
+.dark .bg-green-600,
+.dark .bg-green-700 {
+  background: linear-gradient(135deg, #10D9C4 0%, #059669 100%) !important;
+}
+
+.dark .bg-purple-600,
+.dark .bg-purple-700 {
+  background: linear-gradient(135deg, #8B5CF6 0%, #A855F7 100%) !important;
+}
+
+.dark .bg-emerald-600,
+.dark .bg-emerald-700 {
+  background: linear-gradient(135deg, #10D9C4 0%, #10B981 100%) !important;
+}
+
+.dark .bg-slate-500,
+.dark .bg-slate-600,
+.dark .bg-gray-600,
+.dark .bg-gray-700 {
+  background: linear-gradient(135deg, rgba(37, 42, 58, 0.9) 0%, rgba(26, 27, 38, 0.9) 100%) !important;
+}
+
+/* Logo styles */
+.logo {
+  color: var(--text-button);
+  transition: color 0.3s ease;
+}
+
+.dark .logo {
+  color: #FFFFFF;
+}
+
+/* CYBERPUNK ENHANCED - Glass morphism with liquid effects */
+.dark .glass-liquid,
+.dark .liquid-glass-header {
+  background: rgba(37, 42, 58, 0.75) !important;
+  backdrop-filter: blur(30px) saturate(200%) brightness(1.1) !important;
+  border: 1px solid rgba(139, 92, 246, 0.4) !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(16, 217, 196, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+  position: relative;
+}
+
+.dark .glass-liquid::before,
+.dark .liquid-glass-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, transparent 50%, rgba(16, 217, 196, 0.05) 100%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+.dark .glass-liquid:hover,
+.dark .liquid-glass-header:hover {
+  backdrop-filter: blur(35px) saturate(220%) brightness(1.15) !important;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(16, 217, 196, 0.25),
+    0 0 10px rgba(139, 92, 246, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* CYBERPUNK SHADOWS - Enhanced with cyber colors */
+.dark .shadow-sm,
+.dark .shadow,
+.dark .shadow-md,
+.dark .shadow-lg,
+.dark .shadow-xl,
+.dark .shadow-2xl {
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.4),
+    0 0 20px rgba(139, 92, 246, 0.1),
+    0 0 10px rgba(16, 217, 196, 0.05) !important;
+}
+
+.dark .shadow-black\/30,
+.dark .shadow-black\/40,
+.dark .shadow-black\/50 {
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.5),
+    0 0 25px rgba(139, 92, 246, 0.15),
+    0 0 15px rgba(16, 217, 196, 0.1) !important;
+}
+
+/* CYBERPUNK HOVER EFFECTS - Enhanced with neon glow */
+.dark .hover\:shadow-xl:hover,
+.dark .hover\:shadow-2xl:hover {
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(16, 217, 196, 0.3),
+    0 0 20px rgba(139, 92, 246, 0.2) !important;
+}
+
+.dark .card-hover:hover,
+.dark .hover\:scale-105:hover {
+  transform: translateY(-8px) scale(1.03) !important;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.6),
+    0 0 50px rgba(16, 217, 196, 0.4),
+    0 0 25px rgba(139, 92, 246, 0.3) !important;
+}
+
+/* CYBERPUNK SPECIFIC BACKGROUND OVERRIDES */
+.dark .bg-blue-50,
+.dark .bg-purple-50,
+.dark .bg-green-50,
+.dark .bg-emerald-50,
+.dark .bg-amber-50,
+.dark .bg-orange-50,
+.dark .bg-pink-50,
+.dark .bg-rose-50,
+.dark .bg-yellow-50,
+.dark .bg-teal-50,
+.dark .bg-cyan-50,
+.dark .bg-indigo-50 {
+  background: rgba(37, 42, 58, 0.6) !important;
+  border: 1px solid rgba(139, 92, 246, 0.2) !important;
+}
+
+.dark .bg-blue-50\/50,
+.dark .bg-emerald-50\/50,
+.dark .bg-gray-50\/50,
+.dark .hover\:bg-blue-50:hover,
+.dark .hover\:bg-purple-50:hover,
+.dark .hover\:bg-gray-50:hover {
+  background: rgba(37, 42, 58, 0.8) !important;
+  color: #FFFFFF !important;
+  border: 1px solid rgba(16, 217, 196, 0.3) !important;
+  box-shadow: 0 0 15px rgba(16, 217, 196, 0.1) !important;
+}
+
+/* CYBERPUNK GRADIENTS - Enhanced background gradients */
+.dark .bg-gradient-to-br.from-slate-50.via-blue-50.to-indigo-50,
+.dark .bg-gradient-to-br.from-slate-50.via-white.to-gray-50,
+.dark .bg-gradient-to-br.from-slate-50\/80.to-gray-50\/80 {
+  background: linear-gradient(135deg, 
+    rgba(37, 42, 58, 0.85) 0%, 
+    rgba(26, 27, 38, 0.75) 25%, 
+    rgba(37, 42, 58, 0.85) 50%, 
+    rgba(26, 27, 38, 0.75) 75%, 
+    rgba(37, 42, 58, 0.85) 100%) !important;
+}
+
+.dark .bg-gradient-to-br.from-emerald-50\/90.to-green-50\/90 {
+  background: linear-gradient(135deg, 
+    rgba(37, 42, 58, 0.9) 0%, 
+    rgba(16, 217, 196, 0.1) 25%, 
+    rgba(37, 42, 58, 0.85) 75%, 
+    rgba(16, 217, 196, 0.05) 100%) !important;
+}
+
+.dark .bg-gradient-to-br.from-gray-50\/90.to-white\/90 {
+  background: linear-gradient(135deg, 
+    rgba(37, 42, 58, 0.9) 0%, 
+    rgba(139, 92, 246, 0.05) 50%, 
+    rgba(37, 42, 58, 0.85) 100%) !important;
+}
+
+/* CYBERPUNK ENHANCED - Custom scrollbars */
+.dark .custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(37, 42, 58, 0.5);
+  border-radius: 4px;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #8B5CF6, #10D9C4);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #A855F7, #14F0DD);
+}
+
+/* CYBERPUNK ANIMATIONS - Enhanced with cyber effects */
+@keyframes cyberGlow {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px rgba(139, 92, 246, 0.3),
+      0 0 40px rgba(16, 217, 196, 0.1);
+  }
+  50% {
+    box-shadow: 
+      0 0 30px rgba(139, 92, 246, 0.5),
+      0 0 60px rgba(16, 217, 196, 0.2);
+  }
+}
+
+@keyframes cyberPulse {
+  0%, 100% { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.8; 
+    transform: scale(1.05);
+  }
+}
+
+@keyframes cyberFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.dark .animate-glow {
+  animation: cyberGlow 3s ease-in-out infinite;
+}
+
+.dark .animate-pulse {
+  animation: cyberPulse 2s ease-in-out infinite;
+}
+
+/* CYBERPUNK FILE UPLOAD - Enhanced with neon effects */
+.dark .file-upload-zone,
+.dark .upload-zone {
+  background: linear-gradient(135deg, rgba(37, 42, 58, 0.8) 0%, rgba(26, 27, 38, 0.6) 100%) !important;
+  border: 2px dashed rgba(139, 92, 246, 0.5) !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(139, 92, 246, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.dark .file-upload-zone:hover,
+.dark .upload-zone:hover {
+  background: linear-gradient(135deg, rgba(37, 42, 58, 0.95) 0%, rgba(26, 27, 38, 0.8) 100%) !important;
+  border-color: rgba(16, 217, 196, 0.8) !important;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(16, 217, 196, 0.3),
+    0 0 20px rgba(139, 92, 246, 0.2) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* CYBERPUNK TABLES - Enhanced with cyber styling */
+.dark table {
+  background: rgba(37, 42, 58, 0.85) !important;
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  backdrop-filter: blur(15px) !important;
+}
+
+.dark thead {
+  background: linear-gradient(135deg, rgba(37, 42, 58, 0.95) 0%, rgba(26, 27, 38, 0.9) 100%) !important;
+  border-bottom: 2px solid rgba(139, 92, 246, 0.5) !important;
+}
+
+.dark tbody tr:nth-child(even) {
+  background-color: rgba(37, 42, 58, 0.4) !important;
+}
+
+.dark tbody tr:hover {
+  background-color: rgba(37, 42, 58, 0.8) !important;
+  box-shadow: 
+    inset 0 0 0 1px rgba(16, 217, 196, 0.3),
+    0 0 15px rgba(16, 217, 196, 0.1) !important;
+}
+
+/* CYBERPUNK UNIVERSAL HOVER OVERRIDES */
+.dark button:hover *,
+.dark .btn:hover *,
+.dark .card:hover *,
+.dark .card-hover:hover *,
+.dark .glass-liquid:hover *,
+.dark .liquid-glass-header:hover *,
+.dark .hover\:from-gray-50.hover\:to-blue-50:hover *,
+.dark .hover\:bg-purple-50:hover *,
+.dark .hover\:bg-blue-50:hover *,
+.dark .hover\:bg-gray-50:hover *,
+.dark .hover\:bg-blue-50\/50:hover *,
+.dark .hover\:bg-emerald-50\/50:hover *,
+.dark .hover\:bg-gray-50\/50:hover *,
+.dark [class*="hover:"]:hover *,
+.dark input:hover *,
+.dark select:hover *,
+.dark textarea:hover * {
+  color: #FFFFFF !important;
+}
+
+/* CYBERPUNK ACTIVE STATES */
+.dark button:active,
+.dark button:focus,
+.dark .btn:active,
+.dark .btn:focus,
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+  box-shadow: 
+    0 0 25px rgba(16, 217, 196, 0.4),
+    0 0 15px rgba(139, 92, 246, 0.3),
+    inset 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* CYBERPUNK DISABLED STATES */
+.dark button:disabled,
+.dark .btn:disabled {
+  background: rgba(37, 42, 58, 0.5) !important;
+  border-color: rgba(139, 92, 246, 0.2) !important;
+  color: #64748B !important;
+  opacity: 0.6;
+  box-shadow: none !important;
+}
+
+/* CYBERPUNK LOADING STATES */
+.dark .loading-skeleton {
+  background: linear-gradient(90deg, 
+    rgba(37, 42, 58, 0.6) 25%, 
+    rgba(139, 92, 246, 0.1) 50%, 
+    rgba(37, 42, 58, 0.6) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* CYBERPUNK TOAST NOTIFICATIONS */
+.dark .toast-enter {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.dark .toast-exit {
+  animation: slideInRight 0.3s ease-out reverse;
+}
+
+/* CYBERPUNK MOBILE OPTIMIZATIONS */
+@media (max-width: 768px) {
+  .dark .mobile-optimized {
+    padding: 1rem;
+    background: rgba(37, 42, 58, 0.9) !important;
+    border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  }
+}
+
+/* CYBERPUNK ACCESSIBILITY */
+@media (prefers-contrast: high) {
+  .dark .high-contrast {
+    border: 2px solid rgba(16, 217, 196, 0.8) !important;
+  }
+}
+
+/* CYBERPUNK PRINT OPTIMIZATIONS */
+@media print {
+  .dark .print-optimized {
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+  }
+}
+
+/* CYBERPUNK UTILITY CLASSES */
+.dark .text-shadow {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6), 0 0 10px rgba(139, 92, 246, 0.1) !important;
+}
+
+.dark .backdrop-blur-strong {
+  backdrop-filter: blur(30px) saturate(200%) brightness(1.1) !important;
+}
+
+.dark .gradient-border {
+  background: linear-gradient(rgba(37, 42, 58, 0.9), rgba(37, 42, 58, 0.9)) padding-box,
+              linear-gradient(135deg, #8B5CF6, #10D9C4, #F472B6) border-box;
+  border: 2px solid transparent;
+}
+
+/* CYBERPUNK STATUS INDICATORS */
+.dark .status-online::after {
+  background-color: #10D9C4;
+  box-shadow: 0 0 10px rgba(16, 217, 196, 0.5);
+}
+
+.dark .status-processing::after {
+  background-color: #8B5CF6;
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.dark .status-error::after {
+  background-color: #F472B6;
+  box-shadow: 0 0 10px rgba(244, 114, 182, 0.5);
+}
+
+/* CYBERPUNK INTERACTIVE ELEMENTS */
+.dark .interactive:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 0 20px rgba(16, 217, 196, 0.2);
+}
+
+/* CYBERPUNK ENHANCED - Final overrides for complete transformation */
+.dark .bg-white\/80,
+.dark .bg-white\/90,
+.dark .bg-white\/95,
+.dark .backdrop-blur-sm,
+.dark .backdrop-blur-md,
+.dark .backdrop-blur-lg,
+.dark .backdrop-blur-xl,
+.dark .backdrop-blur-2xl,
+.dark .backdrop-blur-3xl {
+  background: rgba(37, 42, 58, 0.8) !important;
+  border: 1px solid rgba(139, 92, 246, 0.3) !important;
+  color: #FFFFFF !important;
+}
+
+/* CYBERPUNK - Force all hover states to be consistent */
+.dark *:hover {
+  color: #FFFFFF !important;
+}
+
+/* CYBERPUNK - Ensure all interactive elements have cyber styling */
+.dark input[type="radio"]:checked,
+.dark input[type="checkbox"]:checked {
+  background: linear-gradient(135deg, #8B5CF6, #10D9C4) !important;
+  border-color: rgba(16, 217, 196, 0.8) !important;
+  box-shadow: 0 0 15px rgba(16, 217, 196, 0.3) !important;
+}
