@@ -700,13 +700,13 @@ export default function UploadForm() {
         </div>
       )}
 
-      {/* Action Buttons - Enhanced Design */}
-      <div className="flex justify-center space-x-6">
+      {/* Action Buttons - Enhanced Design with Better Spacing */}
+      <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mt-8">
         {!file1Data.value || !file2Data.value ? (
           <button
             onClick={handleUpload}
             disabled={!file1.value || !file2.value || isUploading.value}
-            className="group relative bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-400 disabled:to-gray-500 text-white px-10 py-4 rounded-xl font-bold text-lg disabled:cursor-not-allowed transition-all duration-300 flex items-center space-x-3 shadow-xl dark:shadow-2xl dark:shadow-blue-900/40 hover:shadow-2xl hover:scale-105 disabled:hover:scale-100 border border-blue-500/20 dark:border-blue-400/30"
+            className="group relative bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 disabled:from-gray-400 disabled:to-gray-500 text-white px-12 py-5 rounded-xl font-bold text-lg disabled:cursor-not-allowed transition-all duration-300 flex items-center space-x-4 shadow-xl dark:shadow-2xl dark:shadow-blue-900/40 hover:shadow-2xl hover:scale-105 disabled:hover:scale-100 border border-blue-500/20 dark:border-blue-400/30 min-h-[4rem] w-full sm:w-auto"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             {isUploading.value ? (
@@ -716,17 +716,17 @@ export default function UploadForm() {
               </>
             ) : (
               <>
-                <span className="text-xl relative z-10">📤</span>
+                <span className="text-2xl relative z-10">📤</span>
                 <span className="relative z-10">Upload & Process Files</span>
               </>
             )}
           </button>
         ) : (
-          <div className="flex space-x-4">
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <button
               onClick={handleMatch}
               disabled={!selectedColumn1.value || !selectedColumn2.value || isMatching.value}
-              className="group relative bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 disabled:from-gray-400 disabled:to-gray-500 text-white px-10 py-4 rounded-xl font-bold text-lg disabled:cursor-not-allowed transition-all duration-300 flex items-center space-x-3 shadow-xl dark:shadow-2xl dark:shadow-emerald-900/40 hover:shadow-2xl hover:scale-105 disabled:hover:scale-100 border border-emerald-500/20 dark:border-emerald-400/30"
+              className="group relative bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 disabled:from-gray-400 disabled:to-gray-500 text-white px-12 py-5 rounded-xl font-bold text-lg disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center space-x-4 shadow-xl dark:shadow-2xl dark:shadow-emerald-900/40 hover:shadow-2xl hover:scale-105 disabled:hover:scale-100 border border-emerald-500/20 dark:border-emerald-400/30 min-h-[4rem] w-full sm:w-auto"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               {isMatching.value ? (
@@ -736,8 +736,8 @@ export default function UploadForm() {
                 </>
               ) : (
                 <>
-                  <span className="text-xl relative z-10 text-button">🔍</span>
-                  <span className="relative z-10 text-button">Start Fuzzy Matching</span>
+                  <span className="text-2xl relative z-10">🔍</span>
+                  <span className="relative z-10">Start Fuzzy Matching</span>
                 </>
               )}
             </button>
@@ -745,11 +745,11 @@ export default function UploadForm() {
             <button
               onClick={resetForm}
               disabled={isUploading.value || isMatching.value}
-              className="group relative bg-gradient-to-r from-slate-500 to-slate-600 hover:from-slate-600 hover:to-slate-700 disabled:from-gray-400 disabled:to-gray-500 text-white px-8 py-4 rounded-xl font-semibold disabled:cursor-not-allowed transition-all duration-300 flex items-center space-x-3 shadow-lg dark:shadow-xl dark:shadow-slate-900/40 hover:shadow-xl hover:scale-105 disabled:hover:scale-100 border border-slate-400/20 dark:border-slate-300/20"
+              className="group relative bg-gradient-to-r from-slate-500 to-slate-600 hover:from-slate-600 hover:to-slate-700 disabled:from-gray-400 disabled:to-gray-500 text-white px-10 py-5 rounded-xl font-semibold disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg dark:shadow-xl dark:shadow-slate-900/40 hover:shadow-xl hover:scale-105 disabled:hover:scale-100 border border-slate-400/20 dark:border-slate-300/20 min-h-[4rem] w-full sm:w-auto"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <span className="text-lg relative z-10 text-button">🔄</span>
-              <span className="relative z-10 text-button">Reset Form</span>
+              <span className="text-xl relative z-10">🔄</span>
+              <span className="relative z-10">Reset Form</span>
             </button>
           </div>
         )}
