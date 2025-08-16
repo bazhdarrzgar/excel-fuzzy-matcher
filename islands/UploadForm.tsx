@@ -528,78 +528,97 @@ export default function UploadForm() {
         </div>
       )}
 
-      {/* Additional Columns Selection - NEW FEATURE */}
+      {/* Additional Columns Selection - Enhanced Layout */}
       {selectedColumn1.value && selectedColumn2.value && (
-        <div className="bg-gradient-to-br from-blue-50/80 to-indigo-50/80 dark:from-blue-900/20 dark:to-indigo-900/20 backdrop-blur-sm rounded-xl p-8 border border-blue-200/70 dark:border-blue-600/50 shadow-xl dark:shadow-2xl dark:shadow-black/30">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 flex items-center space-x-2">
-                <span>➕</span>
+        <div className="bg-gradient-to-br from-blue-50/80 to-indigo-50/80 dark:from-blue-900/20 dark:to-indigo-900/20 backdrop-blur-sm rounded-xl p-8 border border-blue-200/70 dark:border-blue-600/50 shadow-xl dark:shadow-2xl dark:shadow-black/30 mt-8">
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 mb-8">
+            <div className="flex-1">
+              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 flex items-center space-x-3">
+                <span className="text-2xl">➕</span>
                 <span>Select Additional Columns for Excel Output (Optional)</span>
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
-                <span className="font-semibold text-amber-600 dark:text-amber-400">📝 Note:</span> These columns will <strong>NOT</strong> be used for fuzzy matching. 
-                They will only be included in your Excel report in the correct rows alongside the matched data.
+              <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed">
+                <span className="inline-flex items-center space-x-2 font-semibold text-amber-600 dark:text-amber-400">
+                  <span>📝</span>
+                  <span>Note:</span>
+                </span> 
+                <span className="ml-2">These columns will <strong>NOT</strong> be used for fuzzy matching. They will only be included in your Excel report in the correct rows alongside the matched data.</span>
               </p>
             </div>
-            <div className="px-4 py-2 bg-blue-50 dark:bg-blue-900/30 rounded-lg border border-blue-200 dark:border-blue-700/50">
-              <span className="text-xs font-medium text-blue-700 dark:text-blue-300">
+            <div className="px-4 py-3 bg-blue-50/80 dark:bg-blue-900/40 rounded-xl border border-blue-200/60 dark:border-blue-700/50 shadow-sm">
+              <span className="text-sm font-bold text-blue-700 dark:text-blue-300 block text-center">
                 Optional Enhancement
+              </span>
+              <span className="text-xs text-blue-600 dark:text-blue-400 block text-center mt-1">
+                Excel Output Only
               </span>
             </div>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Additional Columns from File 1 */}
-            <div className="space-y-3">
-              <div className="flex items-center space-x-2">
-                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
-                  Extra Data from File 1: <span className="text-blue-600 dark:text-blue-400 font-bold">{file1Data.value.filename}</span>
-                  <span className="text-xs text-gray-500 dark:text-gray-400 ml-2">(for Excel output only)</span>
-                </label>
-              </div>
-              <div className="bg-white/90 dark:bg-gray-700/90 border border-gray-300/70 dark:border-gray-500/50 rounded-xl p-4 shadow-sm dark:shadow-lg backdrop-blur-sm">
-                <div className="space-y-2 max-h-48 overflow-y-auto">
-                  {file1Data.value.columns
-                    .filter(col => col !== selectedColumn1.value)
-                    .map((column: string) => (
-                      <label key={column} className="flex items-center space-x-3 p-2 hover:bg-gray-50/80 dark:hover:bg-gray-600/50 rounded-lg cursor-pointer transition-colors">
-                        <input
-                          type="checkbox"
-                          checked={additionalColumns1.value.includes(column)}
-                          onChange={(e) => {
-                            const isChecked = (e.target as HTMLInputElement).checked;
-                            if (isChecked) {
-                              additionalColumns1.value = [...additionalColumns1.value, column];
-                            } else {
-                              additionalColumns1.value = additionalColumns1.value.filter(col => col !== column);
-                            }
-                          }}
-                          className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
-                          disabled={isMatching.value}
-                        />
-                        <span className="text-sm font-medium text-gray-700 dark:text-gray-200 flex-1">
-                          {column}
-                        </span>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">
-                          ({file1Data.value.data.filter((row: any) => row[column] && String(row[column]).trim() !== '').length} values)
-                        </span>
-                      </label>
-                    ))}
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* Additional Columns from File 1 - Enhanced */}
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3 p-3 bg-white/60 dark:bg-gray-800/60 rounded-lg border border-blue-200/40 dark:border-gray-600/40">
+                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                <div className="flex-1">
+                  <label className="block text-sm font-bold text-gray-700 dark:text-gray-200">
+                    Extra Data from File 1
+                  </label>
+                  <div className="flex flex-wrap items-center gap-2 mt-1">
+                    <span className="text-blue-600 dark:text-blue-400 font-semibold text-xs truncate max-w-[200px]" title={file1Data.value.filename}>
+                      {file1Data.value.filename}
+                    </span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100/80 dark:bg-gray-700/50 px-2 py-1 rounded-full">
+                      Excel output only
+                    </span>
+                  </div>
                 </div>
+              </div>
+              
+              <div className="bg-white/90 dark:bg-gray-700/90 border border-gray-300/70 dark:border-gray-500/50 rounded-xl shadow-sm dark:shadow-lg backdrop-blur-sm">
+                <div className="p-4">
+                  <div className="space-y-3 max-h-56 overflow-y-auto">
+                    {file1Data.value.columns
+                      .filter(col => col !== selectedColumn1.value)
+                      .map((column: string) => (
+                        <label key={column} className="flex items-center space-x-3 p-3 hover:bg-gray-50/80 dark:hover:bg-gray-600/50 rounded-lg cursor-pointer transition-all duration-200 group border border-transparent hover:border-blue-200/50 dark:hover:border-blue-600/30">
+                          <input
+                            type="checkbox"
+                            checked={additionalColumns1.value.includes(column)}
+                            onChange={(e) => {
+                              const isChecked = (e.target as HTMLInputElement).checked;
+                              if (isChecked) {
+                                additionalColumns1.value = [...additionalColumns1.value, column];
+                              } else {
+                                additionalColumns1.value = additionalColumns1.value.filter(col => col !== column);
+                              }
+                            }}
+                            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2"
+                            disabled={isMatching.value}
+                          />
+                          <span className="text-sm font-medium text-gray-700 dark:text-gray-200 flex-1 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
+                            {column}
+                          </span>
+                          <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100/80 dark:bg-gray-600/50 px-2 py-1 rounded-full">
+                            {file1Data.value.data.filter((row: any) => row[column] && String(row[column]).trim() !== '').length} values
+                          </span>
+                        </label>
+                      ))}
+                  </div>
+                </div>
+                
                 {additionalColumns1.value.length > 0 && (
-                  <div className="mt-3 pt-3 border-t border-gray-200/50 dark:border-gray-600/50">
+                  <div className="border-t border-gray-200/50 dark:border-gray-600/50 p-4 bg-blue-50/30 dark:bg-blue-900/10">
                     <div className="flex flex-wrap gap-2">
-                      <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Selected:</span>
+                      <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-2 w-full">Selected Columns:</span>
                       {additionalColumns1.value.map(col => (
-                        <span key={col} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border border-blue-200 dark:border-blue-700/50">
+                        <span key={col} className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold bg-blue-100/80 dark:bg-blue-900/40 text-blue-800 dark:text-blue-300 border border-blue-200/60 dark:border-blue-700/50 hover:bg-blue-200/80 dark:hover:bg-blue-800/50 transition-colors">
                           {col}
                           <button
                             onClick={() => {
                               additionalColumns1.value = additionalColumns1.value.filter(c => c !== col);
                             }}
-                            className="ml-1.5 inline-flex items-center justify-center w-3 h-3 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors"
+                            className="ml-2 inline-flex items-center justify-center w-4 h-4 text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-200 transition-colors rounded-full hover:bg-blue-200/50 dark:hover:bg-blue-700/50"
                           >
                             ×
                           </button>
@@ -611,56 +630,69 @@ export default function UploadForm() {
               </div>
             </div>
 
-            {/* Additional Columns from File 2 */}
-            <div className="space-y-3">
-              <div className="flex items-center space-x-2">
-                <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
-                <label className="block text-sm font-semibold text-gray-700 dark:text-gray-200">
-                  Extra Data from File 2: <span className="text-emerald-600 dark:text-emerald-400 font-bold">{file2Data.value.filename}</span>
-                  <span className="text-xs text-gray-500 dark:text-gray-400 ml-2">(for Excel output only)</span>
-                </label>
-              </div>
-              <div className="bg-white/90 dark:bg-gray-700/90 border border-gray-300/70 dark:border-gray-500/50 rounded-xl p-4 shadow-sm dark:shadow-lg backdrop-blur-sm">
-                <div className="space-y-2 max-h-48 overflow-y-auto">
-                  {file2Data.value.columns
-                    .filter(col => col !== selectedColumn2.value)
-                    .map((column: string) => (
-                      <label key={column} className="flex items-center space-x-3 p-2 hover:bg-gray-50/80 dark:hover:bg-gray-600/50 rounded-lg cursor-pointer transition-colors">
-                        <input
-                          type="checkbox"
-                          checked={additionalColumns2.value.includes(column)}
-                          onChange={(e) => {
-                            const isChecked = (e.target as HTMLInputElement).checked;
-                            if (isChecked) {
-                              additionalColumns2.value = [...additionalColumns2.value, column];
-                            } else {
-                              additionalColumns2.value = additionalColumns2.value.filter(col => col !== column);
-                            }
-                          }}
-                          className="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2"
-                          disabled={isMatching.value}
-                        />
-                        <span className="text-sm font-medium text-gray-700 dark:text-gray-200 flex-1">
-                          {column}
-                        </span>
-                        <span className="text-xs text-gray-500 dark:text-gray-400">
-                          ({file2Data.value.data.filter((row: any) => row[column] && String(row[column]).trim() !== '').length} values)
-                        </span>
-                      </label>
-                    ))}
+            {/* Additional Columns from File 2 - Enhanced */}
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3 p-3 bg-white/60 dark:bg-gray-800/60 rounded-lg border border-emerald-200/40 dark:border-gray-600/40">
+                <div className="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                <div className="flex-1">
+                  <label className="block text-sm font-bold text-gray-700 dark:text-gray-200">
+                    Extra Data from File 2
+                  </label>
+                  <div className="flex flex-wrap items-center gap-2 mt-1">
+                    <span className="text-emerald-600 dark:text-emerald-400 font-semibold text-xs truncate max-w-[200px]" title={file2Data.value.filename}>
+                      {file2Data.value.filename}
+                    </span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100/80 dark:bg-gray-700/50 px-2 py-1 rounded-full">
+                      Excel output only
+                    </span>
+                  </div>
                 </div>
+              </div>
+              
+              <div className="bg-white/90 dark:bg-gray-700/90 border border-gray-300/70 dark:border-gray-500/50 rounded-xl shadow-sm dark:shadow-lg backdrop-blur-sm">
+                <div className="p-4">
+                  <div className="space-y-3 max-h-56 overflow-y-auto">
+                    {file2Data.value.columns
+                      .filter(col => col !== selectedColumn2.value)
+                      .map((column: string) => (
+                        <label key={column} className="flex items-center space-x-3 p-3 hover:bg-gray-50/80 dark:hover:bg-gray-600/50 rounded-lg cursor-pointer transition-all duration-200 group border border-transparent hover:border-emerald-200/50 dark:hover:border-emerald-600/30">
+                          <input
+                            type="checkbox"
+                            checked={additionalColumns2.value.includes(column)}
+                            onChange={(e) => {
+                              const isChecked = (e.target as HTMLInputElement).checked;
+                              if (isChecked) {
+                                additionalColumns2.value = [...additionalColumns2.value, column];
+                              } else {
+                                additionalColumns2.value = additionalColumns2.value.filter(col => col !== column);
+                              }
+                            }}
+                            className="w-4 h-4 text-emerald-600 bg-gray-100 border-gray-300 rounded focus:ring-emerald-500 focus:ring-2"
+                            disabled={isMatching.value}
+                          />
+                          <span className="text-sm font-medium text-gray-700 dark:text-gray-200 flex-1 group-hover:text-emerald-700 dark:group-hover:text-emerald-300 transition-colors">
+                            {column}
+                          </span>
+                          <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100/80 dark:bg-gray-600/50 px-2 py-1 rounded-full">
+                            {file2Data.value.data.filter((row: any) => row[column] && String(row[column]).trim() !== '').length} values
+                          </span>
+                        </label>
+                      ))}
+                  </div>
+                </div>
+                
                 {additionalColumns2.value.length > 0 && (
-                  <div className="mt-3 pt-3 border-t border-gray-200/50 dark:border-gray-600/50">
+                  <div className="border-t border-gray-200/50 dark:border-gray-600/50 p-4 bg-emerald-50/30 dark:bg-emerald-900/10">
                     <div className="flex flex-wrap gap-2">
-                      <span className="text-xs font-medium text-gray-600 dark:text-gray-400">Selected:</span>
+                      <span className="text-xs font-semibold text-gray-600 dark:text-gray-400 mb-2 w-full">Selected Columns:</span>
                       {additionalColumns2.value.map(col => (
-                        <span key={col} className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-100 dark:bg-emerald-900/30 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-700/50">
+                        <span key={col} className="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-100/80 dark:bg-emerald-900/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-700/50 hover:bg-emerald-200/80 dark:hover:bg-emerald-800/50 transition-colors">
                           {col}
                           <button
                             onClick={() => {
                               additionalColumns2.value = additionalColumns2.value.filter(c => c !== col);
                             }}
-                            className="ml-1.5 inline-flex items-center justify-center w-3 h-3 text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-200 transition-colors"
+                            className="ml-2 inline-flex items-center justify-center w-4 h-4 text-emerald-600 dark:text-emerald-400 hover:text-emerald-800 dark:hover:text-emerald-200 transition-colors rounded-full hover:bg-emerald-200/50 dark:hover:bg-emerald-700/50"
                           >
                             ×
                           </button>
@@ -673,25 +705,34 @@ export default function UploadForm() {
             </div>
           </div>
 
-          {/* Summary of Selected Additional Columns */}
+          {/* Summary of Selected Additional Columns - Enhanced */}
           {(additionalColumns1.value.length > 0 || additionalColumns2.value.length > 0) && (
-            <div className="mt-6 p-4 bg-gradient-to-r from-blue-50/80 to-emerald-50/80 dark:from-blue-900/20 dark:to-emerald-900/20 border border-blue-200/60 dark:border-blue-600/40 rounded-xl">
-              <div className="flex items-start space-x-3">
-                <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                  <span className="text-white text-sm font-bold">✓</span>
+            <div className="mt-8 p-6 bg-gradient-to-r from-blue-50/80 to-emerald-50/80 dark:from-blue-900/20 dark:to-emerald-900/20 border border-blue-200/60 dark:border-blue-600/40 rounded-xl shadow-lg">
+              <div className="flex items-start space-x-4">
+                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg">
+                  <span className="text-white text-lg font-bold">✓</span>
                 </div>
-                <div>
-                  <h4 className="text-sm font-semibold text-gray-800 dark:text-gray-200 mb-2">
-                    📊 Additional Data for Excel Output
+                <div className="flex-1">
+                  <h4 className="text-base font-bold text-gray-800 dark:text-gray-200 mb-3 flex items-center space-x-2">
+                    <span>📊</span>
+                    <span>Additional Data for Excel Output</span>
                   </h4>
-                  <p className="text-xs text-gray-600 dark:text-gray-400 leading-relaxed">
+                  <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
                     These columns will be included in your Excel report alongside the fuzzy match results.
-                    <strong> Fuzzy matching will only use the two main columns selected above.</strong>
+                    <strong className="text-gray-700 dark:text-gray-300"> Fuzzy matching will only use the two main columns selected above.</strong>
                     The additional data will appear in the corresponding rows of the matched entries.
                   </p>
-                  <div className="mt-2 text-xs text-gray-700 dark:text-gray-300">
-                    <span className="font-medium">File 1:</span> {additionalColumns1.value.length} columns • 
-                    <span className="font-medium ml-2">File 2:</span> {additionalColumns2.value.length} columns
+                  <div className="flex flex-wrap items-center gap-4 text-sm">
+                    <div className="flex items-center space-x-2 bg-blue-100/60 dark:bg-blue-900/30 px-3 py-2 rounded-lg border border-blue-200/50 dark:border-blue-700/30">
+                      <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                      <span className="font-semibold text-blue-700 dark:text-blue-300">File 1:</span>
+                      <span className="text-blue-800 dark:text-blue-200">{additionalColumns1.value.length} columns</span>
+                    </div>
+                    <div className="flex items-center space-x-2 bg-emerald-100/60 dark:bg-emerald-900/30 px-3 py-2 rounded-lg border border-emerald-200/50 dark:border-emerald-700/30">
+                      <span className="w-2 h-2 bg-emerald-500 rounded-full"></span>
+                      <span className="font-semibold text-emerald-700 dark:text-emerald-300">File 2:</span>
+                      <span className="text-emerald-800 dark:text-emerald-200">{additionalColumns2.value.length} columns</span>
+                    </div>
                   </div>
                 </div>
               </div>
